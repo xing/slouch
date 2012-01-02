@@ -1,8 +1,8 @@
 require "test_helper"
 
-class InstallGeneratorTest < Rails::Generators::TestCase
+class InstallGeneratorTest < ::Rails::Generators::TestCase
   tests ::Generators::Backbone::InstallGenerator
-  destination File.expand_path("../tmp", __FILE__)
+  destination File.expand_path("../../tmp", __FILE__)
 
   setup :prepare_destination
 
@@ -11,12 +11,21 @@ class InstallGeneratorTest < Rails::Generators::TestCase
 
     assert_file "app/assets/javascripts/application.js", /\/\/= require\sunderscore/
   end
+
+  private
+
+  def create_application_js
+    tmp_dir = File.expand_path("../../tmp", __FILE__)
+
+    FileUtils.mkdir_p "#{tmp_dir}/app/assets/javascripts/"
+    FileUtils.cp "test/fixtures/application.js", "#{tmp_dir}/app/assets/javascripts/application.js"
+  end
+  setup :create_application_js
+
+  def destroy_application_js
+    FileUtils.rm_rf "test/tmp"
+  end
+  teardown :destroy_application_js
+
 end
-
- # def inject_backbone
- #        inject_into_file "app/assets/javascripts/application.js", :before => "//= require_tree" do
- #          "//= require underscore\n//= require backbone\n//= require backbone_rails_sync\n//= require backbone_datalink\n//= require backbone/#{application_name.underscore}\n"
- #        end
- #      end
-
 
