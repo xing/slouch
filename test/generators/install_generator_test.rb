@@ -1,7 +1,7 @@
 require "test_helper"
 
 class InstallGeneratorTest < ::Rails::Generators::TestCase
-  tests ::Generators::Backbone::InstallGenerator
+  tests ::Backbone::InstallGenerator
   destination File.expand_path("../../tmp", __FILE__)
 
   setup :prepare_destination

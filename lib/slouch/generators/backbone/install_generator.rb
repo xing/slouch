@@ -1,16 +1,13 @@
 require "rails/generators"
 
-module Generators
-  module Backbone
-    class InstallGenerator < ::Rails::Generators::Base
+module Backbone
+  class InstallGenerator < ::Rails::Generators::Base
 
-      def inject_underscore
-        inject_into_file "app/assets/javascripts/application.js", :before => "//= require_tree" do
-          "//= require underscore\n"
-        end
+    def inject_underscore
+      inject_into_file "app/assets/javascripts/application.js", :before => "//= require_tree" do
+        "//= require underscore\n"
       end
-
     end
+
   end
 end
-
