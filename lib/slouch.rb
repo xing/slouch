@@ -1,3 +1,3 @@
 module Slouch
-  require "slouch/generators/backbone/install_generator"
+  require "slouch/generators/backbone"
 end
