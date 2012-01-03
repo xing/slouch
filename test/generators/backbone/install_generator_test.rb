@@ -1,7 +1,6 @@
 require "test_helper"
 
-class InstallGeneratorTest < ::Rails::Generators::TestCase
-  TMP_DIR = "test/tmp"
+class ::Backbone::InstallGeneratorTest < ::Rails::Generators::TestCase
   APP_JS_REL_PATH = "app/assets/javascripts/application.js"
 
   tests ::Backbone::InstallGenerator
@@ -32,10 +31,6 @@ class InstallGeneratorTest < ::Rails::Generators::TestCase
   def create_application_js
     FileUtils.mkdir_p "#{TMP_DIR}/app/assets/javascripts/"
     FileUtils.cp "test/fixtures/application.js", "#{TMP_DIR}/#{APP_JS_REL_PATH}"
-  end
-
-  def destroy_tmp_dir
-    FileUtils.rm_rf TMP_DIR
   end
 
 end

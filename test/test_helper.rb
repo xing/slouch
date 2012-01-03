@@ -12,3 +12,12 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 # For Generators
 require 'rails/generators/test_case'
 
+class ::Rails::Generators::TestCase
+  TMP_DIR = "test/tmp"
+
+  private
+
+  def destroy_tmp_dir
+    FileUtils.rm_rf TMP_DIR
+  end
+end
