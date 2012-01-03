@@ -12,7 +12,7 @@ class InstallGeneratorTest < ::Rails::Generators::TestCase
 
   teardown :destroy_tmp_dir
 
-  test "install generator insert require underscore into application.js" do
+  test "install generator inserts require underscore into application.js" do
     run_generator
     assert_file APP_JS_REL_PATH, /\/\/= require\sunderscore/
   end
