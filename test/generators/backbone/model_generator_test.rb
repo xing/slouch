@@ -1,8 +1,8 @@
 require "test_helper"
 
-class ::Slouch::ScaffoldGeneratorTest < ::Rails::Generators::TestCase
-  tests ::Slouch::ScaffoldGenerator
-  arguments %w(product_line title:string product:belongs_to user:references)
+class ::Backbone::ModelGeneratorTest < ::Rails::Generators::TestCase
+  tests ::Backbone::ModelGenerator
+  # arguments %w(product_line title:string product:belongs_to user:references)
   destination TMP_DIR
 
   setup :prepare_destination
@@ -14,3 +14,4 @@ class ::Slouch::ScaffoldGeneratorTest < ::Rails::Generators::TestCase
   end
 
 end
+
