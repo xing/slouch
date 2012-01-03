@@ -8,16 +8,18 @@ class InstallGeneratorTest < ::Rails::Generators::TestCase
 
   test "install generator insert require underscore into application.js" do
     run_generator
-
     assert_file "app/assets/javascripts/application.js", /\/\/= require\sunderscore/
   end
 
   test "install generator inserts require backbone into application.js" do
     run_generator
-
     assert_file "app/assets/javascripts/application.js", /\/\/= require\sbackbone/
   end
 
+  test "install generator injects backbone dependencies in the right order: first underscore then backbone" do
+    run_generator
+    assert_file "app/assets/javascripts/application.js", /\/\/= require\sunderscore\n\/\/= require\sbackbone/
+  end
 
   private
 
