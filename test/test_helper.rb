@@ -18,6 +18,6 @@ class ::Rails::Generators::TestCase
   private
 
   def destroy_tmp_dir
-    # FileUtils.rm_rf TMP_DIR
+    FileUtils.rm_rf TMP_DIR
   end
 end
