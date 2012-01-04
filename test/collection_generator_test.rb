@@ -3,7 +3,9 @@ require "generators/slouch/collection_generator"
 
 class CollectionGeneratorTest < ::Rails::Generators::TestCase
   tests ::Slouch::Generators::CollectionGenerator
-  arguments %w(product_line title:string product:belongs_to user:references)
+
+  MODEL_NAME = "product_line"
+  arguments [MODEL_NAME]
   destination TMP_DIR
 
   setup    :prepare_destination
@@ -11,7 +13,7 @@ class CollectionGeneratorTest < ::Rails::Generators::TestCase
 
   test "should create a backbone collection" do
     run_generator
-    assert_file "app/assets/javascripts/collections/product_line.js"
+    assert_file "app/assets/javascripts/collections/#{MODEL_NAME}s.js"
   end
 
 end

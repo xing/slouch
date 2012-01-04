@@ -3,7 +3,9 @@ require "generators/slouch/model_generator"
 
 class ModelGeneratorTest < ::Rails::Generators::TestCase
   tests ::Slouch::Generators::ModelGenerator
-  arguments %w(product_line title:string product:belongs_to user:references)
+
+  MODEL_NAME = "product_line"
+  arguments [MODEL_NAME]
   destination TMP_DIR
 
   setup    :prepare_destination
@@ -11,7 +13,7 @@ class ModelGeneratorTest < ::Rails::Generators::TestCase
 
   test "should create a backbone model" do
     run_generator
-    assert_file "app/assets/javascripts/models/product_line.js"
+    assert_file "app/assets/javascripts/models/#{MODEL_NAME}.js"
   end
 
 end
