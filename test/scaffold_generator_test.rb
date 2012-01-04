@@ -52,6 +52,27 @@ class ScaffoldGeneratorTest < ::Rails::Generators::TestCase
     assert_file "config/routes.rb", /resources\s:#{MODEL_NAME.pluralize.downcase}/
   end
 
+  test "should create a rails views directory" do
+    run_generator
+    assert_directory "app/views/#{MODEL_NAME.pluralize.downcase}"
+  end
+
+  test "should create a rails view file for each crud action" do
+    run_generator
+    assert_file "app/views/#{MODEL_NAME.pluralize.downcase}/index.html.erb"
+    assert_file "app/views/#{MODEL_NAME.pluralize.downcase}/show.html.erb"
+    assert_file "app/views/#{MODEL_NAME.pluralize.downcase}/edit.html.erb"
+    assert_file "app/views/#{MODEL_NAME.pluralize.downcase}/new.html.erb"
+  end
+
+  test "should create a backbone view file for each crud action" do
+    run_generator
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME.pluralize.downcase}/index.js"
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME.pluralize.downcase}/show.js"
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME.pluralize.downcase}/edit.js"
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME.pluralize.downcase}/new.js"
+  end
+
   test "should create a backbone router" do
     run_generator
     assert_file "app/assets/javascripts/routers/router.js"

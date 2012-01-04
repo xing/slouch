@@ -6,12 +6,18 @@ module Slouch
     class ScaffoldGenerator < ::Rails::Generators::NamedBase
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
 
+      class_option :template_engine, :default => :erb
+
       def create_backbone_model
         invoke "slouch:model", [name]
       end
 
       def create_backbone_collection
         invoke "slouch:collection", [name]
+      end
+
+      def create_backbone_views
+        invoke "slouch:views", [name]
       end
 
       def create_rails_model
@@ -28,6 +34,10 @@ module Slouch
 
       def create_rails_controller_test
         invoke "#{generator_rails_options[:test_framework]}:controller", [name.pluralize]
+      end
+
+      def create_rails_views
+        invoke "#{options[:template_engine]}:scaffold", [name.pluralize]
       end
 
       def create_rails_route
