@@ -78,6 +78,13 @@ class ScaffoldGeneratorTest < ::Rails::Generators::TestCase
     assert_file "app/assets/javascripts/routers/router.js"
   end
 
+  test "should create a namespace for all backbone-related stuff" do
+    run_generator
+    assert_file "app/assets/javascripts/backbone_app.js"
+    assert_file "app/assets/javascripts/backbone_app.js",
+                /#{Rails.application.class.to_s.split("::").first}/
+  end
+
   private
 
   def create_routes_file

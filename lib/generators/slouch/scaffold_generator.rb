@@ -5,8 +5,13 @@ module Slouch
   module Generators
     class ScaffoldGenerator < ::Rails::Generators::NamedBase
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
+      source_root File.expand_path('../templates', __FILE__)
 
       class_option :template_engine, :default => :erb
+
+      def create_backbone_namespace
+        template "backbone_app.js", "app/assets/javascripts/backbone_app.js"
+      end
 
       def create_backbone_model
         invoke "slouch:model", [name]
@@ -57,6 +62,11 @@ module Slouch
       def generator_rails_options
         Rails.application.config.generators.options[:rails]
       end
+
+      def application_name
+        Rails.application.class.to_s.split("::").first
+      end
+
     end
   end
 end
