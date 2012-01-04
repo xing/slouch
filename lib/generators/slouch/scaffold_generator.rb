@@ -31,7 +31,7 @@ module Slouch
       end
 
       def create_rails_route
-        # stolen from railties: resource_generator.rb starting line 18 (add_resource_route)
+        # stolen from railties: resource_generator.rb starting on line 18 (add_resource_route)
         route_config =  regular_class_path.collect{|namespace| "namespace :#{namespace} do " }.join(" ")
         route_config << "resources :#{file_name.pluralize}"
         route_config << " end" * regular_class_path.size
