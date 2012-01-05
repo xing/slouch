@@ -27,6 +27,8 @@ class ViewsGeneratorTest < ::Rails::Generators::TestCase
   test "should create backbone show view" do
     run_generator
     assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/show.js"
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/show.js",
+                /render: /
   end
 
   test "should create backbone edit view" do

@@ -16,8 +16,4 @@ class StylesheetGeneratorTest < ::Rails::Generators::TestCase
     assert_file "app/assets/stylesheets/slouch.css.scss"
   end
 
-  test "it should create the resource stylesheet" do
-    run_generator
-    assert_file "app/assets/stylesheets/#{MODEL_NAME.underscore.pluralize}.css.scss"
-  end
 end

@@ -14,10 +14,6 @@ module Slouch
         template "slouch.css.scss", "app/assets/stylesheets/slouch.css.scss"
       end
 
-      def create_resource_stylesheet
-        template "resource.css.scss", "app/assets/stylesheets/#{rails_collection_name}.css.scss"
-      end
-
     end
   end
 end

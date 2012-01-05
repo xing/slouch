@@ -96,7 +96,6 @@ class ScaffoldGeneratorTest < ::Rails::Generators::TestCase
   test "should create the slouch stylesheets" do
     run_generator
     assert_file "app/assets/stylesheets/slouch.css.scss"
-    assert_file "app/assets/stylesheets/#{MODEL_NAME.underscore.pluralize}.css.scss"
   end
 
   private
