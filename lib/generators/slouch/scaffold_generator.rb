@@ -9,6 +9,7 @@ module Slouch
 
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
       source_root File.expand_path('../templates', __FILE__)
+      check_class_collision :suffix => "Controller"
 
       class_option :template_engine, :default => :erb
 
@@ -37,7 +38,7 @@ module Slouch
       end
 
       def create_rails_controller
-        invoke "scaffold_controller", [name]
+        # template "controller.rb", File.join('app/controllers', class_path, "#{name.underscore.pluralize}_controller.rb")
       end
 
       def create_rails_views
@@ -59,6 +60,8 @@ module Slouch
       def create_slouch_stylesheet
         invoke "slouch:stylesheet"
       end
+
+      hook_for :scaffold_controller, :in => :rails
 
     end
   end
