@@ -1,7 +1,7 @@
-<h1>Listing people</h1>
+<h1>Listing <%= name.pluralize.humanize %></h1>
 
 <ul class="list">
-  <%% @people.each do |person| %>
+  <%% @<%= rails_collection_name %>.each do |<%= rails_model_name %>| %>
     <li>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -10,12 +10,12 @@
       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       <div class="actions">
-        <%%= link_to 'Show', person, class: 'action' %>
-        <%%= link_to 'Edit', edit_person_path(person), class: 'action' %>
-        <%%= link_to 'Destroy', person, class: 'action delete', confirm: 'Are you sure?', method: :delete %>
+        <%%= link_to 'Show', <%= rails_model_name %>, class: 'action' %>
+        <%%= link_to 'Edit', edit_<%= rails_model_name %>_path(<%= rails_model_name %>), class: 'action' %>
+        <%%= link_to 'Destroy', <%= rails_model_name %>, class: 'action delete', confirm: 'Are you sure?', method: :delete %>
       </div>
     </li>
   <%% end %>
 </ul>
 
-<%%= link_to 'New Person', new_person_path, class: 'action' %>
+<%%= link_to 'New <%= name.humanize %>', new_<%= rails_model_name %>_path, class: 'action' %>
