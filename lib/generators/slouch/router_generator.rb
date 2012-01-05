@@ -1,3 +1,4 @@
+require "test_helper"
 require "rails/generators"
 require "generators/slouch/helper"
 

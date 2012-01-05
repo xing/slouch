@@ -38,8 +38,6 @@ class ScaffoldGeneratorTest < ::Rails::Generators::TestCase
                      /t\.string :title/
   end
 
-  end
-
   test "should create a rails resource route" do
     run_generator
     assert_file "config/routes.rb", /resources\s:#{MODEL_NAME.underscore.pluralize}/
