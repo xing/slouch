@@ -34,7 +34,8 @@ class ScaffoldGeneratorTest < ::Rails::Generators::TestCase
 
   test "should create a db migration" do
     run_generator
-    assert_migration "db/migrate/create_#{MODEL_NAME}s.rb"
+    assert_migration "db/migrate/create_#{MODEL_NAME}s.rb",
+                     /t\.string :title/
   end
 
   test "should create a rails controller" do

@@ -29,7 +29,7 @@ module Slouch
       end
 
       def create_rails_model
-        invoke "#{generator_rails_options[:orm]}:model", [name]
+        invoke "#{generator_rails_options[:orm]}:model", [name] + attributes.map {|a| "#{a.name}:#{a.type}"}
       end
 
       def create_rails_model_test
