@@ -37,15 +37,11 @@ module Slouch
       end
 
       def create_rails_controller
-        invoke "controller", [name.pluralize]
-      end
-
-      def create_rails_controller_test
-        invoke "#{generator_rails_options[:test_framework]}:controller", [name.pluralize]
+        invoke "scaffold_controller", [name]
       end
 
       def create_rails_views
-        invoke "#{options[:template_engine]}:scaffold", [name.pluralize]
+        invoke "#{options[:template_engine]}:scaffold", [name]
       end
 
       def create_rails_route
