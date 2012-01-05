@@ -14,6 +14,7 @@ require 'rails/generators/test_case'
 
 class ::Rails::Generators::TestCase
   TMP_DIR = "test/tmp"
+  APP_JS_REL_PATH = "app/assets/javascripts/application.js"
 
   private
 
@@ -23,5 +24,10 @@ class ::Rails::Generators::TestCase
 
   def application_name
     Rails.application.class.to_s.split("::").first
+  end
+
+  def create_application_js
+    FileUtils.mkdir_p "#{TMP_DIR}/app/assets/javascripts/"
+    FileUtils.cp "test/fixtures/application.js", "#{TMP_DIR}/#{APP_JS_REL_PATH}"
   end
 end

@@ -5,10 +5,11 @@ class ScaffoldGeneratorTest < ::Rails::Generators::TestCase
   tests ::Slouch::Generators::ScaffoldGenerator
 
   MODEL_NAME = "ProductLine"
-  arguments [MODEL_NAME, "title:string", "product:belongs_to", "user:references", "--migration=true"]
+  arguments [MODEL_NAME, "title:string", "product:belongs_to", "user:references", "--migration=true", "--skip-template_engine"]
   destination TMP_DIR
 
   setup    :prepare_destination
+  setup    :create_application_js
   setup    :create_routes_file
   teardown :destroy_tmp_dir
 

@@ -9,7 +9,6 @@ module Slouch
 
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
       source_root File.expand_path('../templates', __FILE__)
-      check_class_collision :suffix => "Controller"
 
       class_option :template_engine, :default => :erb
 
@@ -37,14 +36,6 @@ module Slouch
         invoke "#{generator_rails_options[:test_framework]}:model", [name]
       end
 
-      def create_rails_controller
-        # template "controller.rb", File.join('app/controllers', class_path, "#{name.underscore.pluralize}_controller.rb")
-      end
-
-      def create_rails_views
-        invoke "slouch:templates", [name]
-      end
-
       def create_rails_route
         # stolen from railties: resource_generator.rb starting on line 18 (add_resource_route)
         route_config =  regular_class_path.collect{|namespace| "namespace :#{namespace} do " }.join(" ")
@@ -57,11 +48,17 @@ module Slouch
         invoke "slouch:router"
       end
 
+      def create_rails_views
+        invoke "slouch:templates", [name]
+      end
+
       def create_slouch_stylesheet
         invoke "slouch:stylesheet"
       end
 
-      hook_for :scaffold_controller, :in => :rails
+      def create_controller
+        invoke "scaffold_controller", [name], :template_engine => false
+      end
 
     end
   end

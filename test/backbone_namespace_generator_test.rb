@@ -1,15 +1,13 @@
 require "test_helper"
-require "generators/slouch/router_generator"
+require "generators/slouch/backbone_namespace_generator"
 
-class RouterGeneratorTest < ::Rails::Generators::TestCase
-  tests ::Slouch::Generators::RouterGenerator
+class BackboneNamespaceGeneratorTest < ::Rails::Generators::TestCase
 
-  MODEL_NAME = "ProductLine"
-
-  arguments [MODEL_NAME]
+  tests ::Slouch::Generators::BackboneNamespaceGenerator
   destination TMP_DIR
 
   setup    :prepare_destination
+  setup    :create_application_js
   teardown :destroy_tmp_dir
 
   test "should create a namespace for all backbone-related stuff" do
@@ -25,5 +23,10 @@ class RouterGeneratorTest < ::Rails::Generators::TestCase
                 /public_\.Views/
     assert_file "app/assets/javascripts/backbone_app.js",
                 /public_\.Routers/
+  end
+
+  test "should be required in the manifest before require_tree" do
+    run_generator
+    assert_file APP_JS_REL_PATH, /\/\/= require\sbackbone_app\n\s*\/\/=\srequire_tree/
   end
 end

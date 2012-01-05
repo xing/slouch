@@ -10,6 +10,7 @@ class RouterGeneratorTest < ::Rails::Generators::TestCase
   destination TMP_DIR
 
   setup    :prepare_destination
+  setup    :create_application_js
   teardown :destroy_tmp_dir
 
   test "should create a router in the app namespace object" do
