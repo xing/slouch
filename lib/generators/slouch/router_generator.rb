@@ -3,13 +3,20 @@ require "generators/slouch/helper"
 
 module Slouch
   module Generators
-    class RouterGenerator < ::Rails::Generators::Base
+    class RouterGenerator < ::Rails::Generators::NamedBase
       include ::Slouch::Generators::Helper
 
       source_root File.expand_path('../templates', __FILE__)
 
       def create
         template "router.js", "app/assets/javascripts/routers/router.js"
+      end
+
+      def create_crud_routes
+        inject_into_file "app/assets/javascripts/routers/router.js",
+                         :after => "routes:\s{\n" do
+          "      \"#{name.underscore.pluralize}\": \"#{name.pluralize}.index\""
+        end
       end
 
     end

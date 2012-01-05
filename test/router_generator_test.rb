@@ -5,6 +5,8 @@ class RouterGeneratorTest < ::Rails::Generators::TestCase
   tests ::Slouch::Generators::RouterGenerator
 
   MODEL_NAME = "ProductLine"
+
+  arguments [MODEL_NAME]
   destination TMP_DIR
 
   setup    :prepare_destination
@@ -28,5 +30,11 @@ class RouterGeneratorTest < ::Rails::Generators::TestCase
                 /routes:\s{/
     assert_file "app/assets/javascripts/routers/router.js",
                 /initialize:\sfunction\(\)\s{/
+  end
+
+  test "should create the properly namespaced routes for index" do
+    run_generator
+    assert_file "app/assets/javascripts/routers/router.js",
+                /\s*"#{MODEL_NAME.underscore.pluralize}":\s"#{MODEL_NAME.pluralize}\.index"/
   end
 end

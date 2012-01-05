@@ -25,6 +25,10 @@ module Slouch
         def application_name
           Rails.application.class.to_s.split("::").first
         end
+
+        def crud_actions
+          %w(index show edit new)
+        end
       end
 
     end
