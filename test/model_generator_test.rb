@@ -27,4 +27,13 @@ class ModelGeneratorTest < ::Rails::Generators::TestCase
     assert_file "app/assets/javascripts/models/#{MODEL_NAME}.js",
                 /product: null/
   end
+
+  test "should namespace the model in the application object" do
+    run_generator
+    assert_file "app/assets/javascripts/models/#{MODEL_NAME}.js",
+                /#{application_name} = \(\s*function/
+    assert_file "app/assets/javascripts/models/#{MODEL_NAME}.js",
+                /public_\.Models.#{MODEL_NAME.camelize}\s+=/
+  end
+
 end

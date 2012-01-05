@@ -1,9 +1,12 @@
 require "rails/generators"
 require 'rails/generators/named_base'
+require "generators/slouch/helper"
 
 module Slouch
   module Generators
     class ScaffoldGenerator < ::Rails::Generators::NamedBase
+      include ::Slouch::Generators::Helper
+
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
       source_root File.expand_path('../templates', __FILE__)
 
@@ -55,16 +58,6 @@ module Slouch
 
       def create_backbone_router
         invoke "slouch:router"
-      end
-
-      private
-
-      def generator_rails_options
-        Rails.application.config.generators.options[:rails]
-      end
-
-      def application_name
-        Rails.application.class.to_s.split("::").first
       end
 
     end

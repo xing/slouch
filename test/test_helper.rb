@@ -20,4 +20,8 @@ class ::Rails::Generators::TestCase
   def destroy_tmp_dir
     FileUtils.rm_rf TMP_DIR
   end
+
+  def application_name
+    Rails.application.class.to_s.split("::").first
+  end
 end

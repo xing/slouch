@@ -82,7 +82,7 @@ class ScaffoldGeneratorTest < ::Rails::Generators::TestCase
     run_generator
     assert_file "app/assets/javascripts/backbone_app.js"
     assert_file "app/assets/javascripts/backbone_app.js",
-                /#{Rails.application.class.to_s.split("::").first}/
+                /#{application_name}/
     assert_file "app/assets/javascripts/backbone_app.js",
                 /public_\.Models/
     assert_file "app/assets/javascripts/backbone_app.js",

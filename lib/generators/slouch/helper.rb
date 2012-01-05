@@ -18,7 +18,15 @@ module Slouch
           name.pluralize
         end
 
+        def generator_rails_options
+          Rails.application.config.generators.options[:rails]
+        end
+
+        def application_name
+          Rails.application.class.to_s.split("::").first
+        end
       end
+
     end
   end
 end
