@@ -13,7 +13,7 @@ module Slouch
       class_option :template_engine, :default => :erb
 
       def create_backbone_namespace
-        template "backbone_app.js", "app/assets/javascripts/backbone_app.js"
+        invoke "slouch:backbone_namespace"
       end
 
       def create_backbone_model
