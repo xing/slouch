@@ -27,6 +27,12 @@ class ViewsGeneratorTest < ::Rails::Generators::TestCase
   test "should create backbone show view" do
     run_generator
     assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/show.js"
+  end
+
+  test "should create show view with initialize and render" do
+    run_generator
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/show.js",
+                /initialize: /
     assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/show.js",
                 /render: /
   end
@@ -36,8 +42,24 @@ class ViewsGeneratorTest < ::Rails::Generators::TestCase
     assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/edit.js"
   end
 
+  test "should create edit view with initialize and render" do
+    run_generator
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/edit.js",
+                /update: /
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/edit.js",
+                /render: /
+  end
+
   test "should create backbone new view" do
     run_generator
     assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/new.js"
+  end
+
+  test "should create new view with initialize and render" do
+    run_generator
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/new.js",
+                /create: /
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/new.js",
+                /render: /
   end
 end

@@ -18,6 +18,10 @@ module Slouch
           name.underscore.pluralize
         end
 
+        def rails_model_name
+          name.underscore
+        end
+
         def generator_rails_options
           Rails.application.config.generators.options[:rails]
         end
