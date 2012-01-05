@@ -19,6 +19,15 @@ module Slouch
         end
       end
 
+      def create_backbone_namespace
+        template "backbone_app.js", "app/assets/javascripts/backbone_app.js"
+      end
+
+      def inject_router_initialization
+        inject_into_file "app/assets/javascripts/backbone_app.js", :after => "public_.Routers = {" do
+          "\n    window.App = new public_.Routers.Router();\n    Backbone.history.start({ pushState: true });"
+        end
+      end
     end
   end
 end
