@@ -41,7 +41,7 @@ module Slouch
       end
 
       def create_rails_views
-        invoke "#{options[:template_engine]}:scaffold", [name]
+        invoke "slouch:templates", [name]
       end
 
       def create_rails_route
