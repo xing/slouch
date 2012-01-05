@@ -16,6 +16,14 @@ class ViewsGeneratorTest < ::Rails::Generators::TestCase
     assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/index.js"
   end
 
+  test "should create index view with initialize and render" do
+    run_generator
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/index.js",
+                /initialize: /
+    assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/index.js",
+                /render: /
+  end
+
   test "should create backbone show view" do
     run_generator
     assert_file "app/assets/javascripts/views/#{MODEL_NAME}s/show.js"

@@ -1,9 +1,12 @@
 require "rails/generators"
-require 'rails/generators/named_base'
+require "rails/generators/named_base"
+require "generators/slouch/helper"
 
 module Slouch
   module Generators
     class ViewsGenerator < ::Rails::Generators::NamedBase
+      include ::Slouch::Generators::Helper
+
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
       source_root File.expand_path('../templates', __FILE__)
 
