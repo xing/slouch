@@ -4,7 +4,7 @@ require "generators/slouch/model_generator"
 class ModelGeneratorTest < ::Rails::Generators::TestCase
   tests ::Slouch::Generators::ModelGenerator
 
-  MODEL_NAME = "product_line"
+  MODEL_NAME = "ProductLine"
   arguments [MODEL_NAME, "title:string", "product:belongs_to", "user:references", "--migration=true"]
   destination TMP_DIR
 
@@ -13,27 +13,27 @@ class ModelGeneratorTest < ::Rails::Generators::TestCase
 
   test "should create a backbone model" do
     run_generator
-    assert_file "app/assets/javascripts/models/#{MODEL_NAME}.js"
+    assert_file "app/assets/javascripts/models/#{MODEL_NAME.underscore}.js"
   end
 
   test "should create a model with default attributes" do
     run_generator
-    assert_file "app/assets/javascripts/models/#{MODEL_NAME}.js",
+    assert_file "app/assets/javascripts/models/#{MODEL_NAME.underscore}.js",
                 /defaults: /
-    assert_file "app/assets/javascripts/models/#{MODEL_NAME}.js",
+    assert_file "app/assets/javascripts/models/#{MODEL_NAME.underscore}.js",
                 /title: null/
-    assert_file "app/assets/javascripts/models/#{MODEL_NAME}.js",
+    assert_file "app/assets/javascripts/models/#{MODEL_NAME.underscore}.js",
                 /user: null/
-    assert_file "app/assets/javascripts/models/#{MODEL_NAME}.js",
+    assert_file "app/assets/javascripts/models/#{MODEL_NAME.underscore}.js",
                 /product: null/
   end
 
   test "should namespace the model in the application object" do
     run_generator
-    assert_file "app/assets/javascripts/models/#{MODEL_NAME}.js",
+    assert_file "app/assets/javascripts/models/#{MODEL_NAME.underscore}.js",
                 /#{application_name} = \(\s*function/
-    assert_file "app/assets/javascripts/models/#{MODEL_NAME}.js",
-                /public_\.Models.#{MODEL_NAME.camelize}\s+=/
+    assert_file "app/assets/javascripts/models/#{MODEL_NAME.underscore}.js",
+                /public_\.Models\.#{MODEL_NAME.camelize}\s+=/
   end
 
 end
