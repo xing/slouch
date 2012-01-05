@@ -60,6 +60,10 @@ module Slouch
         invoke "slouch:router"
       end
 
+      def create_slouch_stylesheet
+        invoke "slouch:stylesheet"
+      end
+
     end
   end
 end

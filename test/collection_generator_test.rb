@@ -21,7 +21,7 @@ class CollectionGeneratorTest < ::Rails::Generators::TestCase
     assert_file "app/assets/javascripts/collections/#{MODEL_NAME.underscore.pluralize}.js",
                 /model: #{MODEL_NAME.camelize}/
     assert_file "app/assets/javascripts/collections/#{MODEL_NAME.underscore.pluralize}.js",
-                /url: "#{MODEL_NAME.pluralize}"/
+                /url: "#{MODEL_NAME.underscore.pluralize}"/
   end
 
   test "should namespace the model in the application object" do

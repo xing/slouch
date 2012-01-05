@@ -10,8 +10,12 @@ module Slouch
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
       source_root File.expand_path('../templates', __FILE__)
 
-      def create
+      def create_master_stylesheet
         template "slouch.css.scss", "app/assets/stylesheets/slouch.css.scss"
+      end
+
+      def create_resource_stylesheet
+        template "resource.css.scss", "app/assets/stylesheets/#{rails_collection_name}.css.scss"
       end
 
     end

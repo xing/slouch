@@ -14,8 +14,8 @@ module Slouch
           name.camelize
         end
 
-        def collection_restful_url
-          name.pluralize
+        def rails_collection_name
+          name.underscore.pluralize
         end
 
         def generator_rails_options
