@@ -1,9 +1,15 @@
+<h1>
+  <span>Show <%= name.humanize.downcase %></span>
+</h1>
+
 <p id="notice"><%%= notice %></p>
 
-<% attributes.each do |attribute| -%>
-  <%= attribute.name.humanize %>
-  <%%= @<%= rails_model_name %>.<%= attribute.name %> %>
-<% end -%>
+<dl class="list">
+  <% attributes.each do |attribute| -%>
+    <dt><%= attribute.name.humanize %></dt>
+    <dd><%%= @<%= rails_model_name %>.<%= attribute.name %> %></dd>
+  <% end -%>
+</dl>
 
 <%%= link_to "Edit", edit_<%= rails_model_name %>_path(@<%= rails_model_name %>), class: "action" %>
 <%%= link_to "Back", <%= rails_collection_name %>_path, class: "action" %>

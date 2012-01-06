@@ -59,9 +59,26 @@ h1, h2, h3, h4, h5, h6, strong {
 }
 
 h1 {
-  font-size: 1.5em;
-  line-height: 1.4em;
-  margin-bottom: 14px;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-style: none none solid;
+  border-width: 1px;
+  -webkit-box-shadow: 0 1px 0 rgb(255, 255, 255);
+  -moz-box-shadow: 0 1px 0 rgb(255, 255, 255);
+  -o-box-shadow: 0 1px 0 rgb(255, 255, 255);
+  box-shadow: 0 1px 0 rgb(255, 255, 255);
+  margin: -12px 0 21px;
+  text-align: center;
+
+  span {
+    background-color: rgb(235, 235, 235);
+    bottom: -12px;
+    color: rgba(36, 36, 36, 0.25);
+    display: inline-block;
+    font-size: 1.2em;
+    padding: 0 7px;
+    position: relative;
+    text-shadow: 1px 1px 0 rgb(255, 255, 255);
+  }
 }
 
 form {
@@ -74,7 +91,10 @@ fieldset {
   }
 
   label {
+    color: rgba(36, 36, 36, 0.5);
     display: block;
+    font-size: 12px;
+    text-shadow: 1px 1px 0 rgb(255, 255, 255);
   }
 
   input[type=text], textarea {
@@ -125,6 +145,34 @@ fieldset {
     &:hover {
       background-color: rgba(0, 0, 0, 0.05);
     }
+  }
+
+  dt, dd {
+    border-color: rgba(0, 0, 0, 0.1);
+    border-style: none none solid;
+    border-width: 1px;
+    min-height: 1.4em;
+    padding: 7px 14px;
+  }
+
+  dt {
+    clear: left;
+    color: rgba(36, 36, 36, 0.5);
+    float: left;
+    font-size: 12px;
+    padding-right: 0.4em;
+    text-shadow: 1px 1px 0 rgb(255, 255, 255);
+
+    &:after {
+      content: ": "
+    }
+  }
+
+  dd {
+    overflow: hidden;
+    padding-left: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .actions {
