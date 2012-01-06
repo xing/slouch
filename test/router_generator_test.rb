@@ -44,6 +44,54 @@ class RouterGeneratorTest < ::Rails::Generators::TestCase
   test "should create the properly namespaced routes for index" do
     run_generator
     assert_file "app/assets/javascripts/routers/router.js",
-                /\s*"#{MODEL_NAME.underscore.pluralize}":\s"#{MODEL_NAME.pluralize}\.index"/
+                /"#{MODEL_NAME.underscore.pluralize}":\s+"#{MODEL_NAME.pluralize}\.index"/
+  end
+
+  test "should create the properly namespaced routes for show" do
+    run_generator
+    assert_file "app/assets/javascripts/routers/router.js",
+                /"#{MODEL_NAME.underscore.pluralize}\/:id":\s+"#{MODEL_NAME.pluralize}\.show"/
+  end
+
+  test "should create the properly namespaced routes for edit" do
+    run_generator
+    assert_file "app/assets/javascripts/routers/router.js",
+                /"#{MODEL_NAME.underscore.pluralize}\/:id\/edit":\s+"#{MODEL_NAME.pluralize}\.edit"/
+  end
+
+  test "should create the properly namespaced routes for new" do
+    run_generator
+    assert_file "app/assets/javascripts/routers/router.js",
+                /"#{MODEL_NAME.underscore.pluralize}\/new":\s+"#{MODEL_NAME.pluralize}\.new"/
+  end
+
+  test "should create namespace for methods" do
+    run_generator
+    assert_file "app/assets/javascripts/routers/router.js",
+                /#{MODEL_NAME.pluralize}\s=\s{/
+  end
+
+  test "should create index method" do
+    run_generator
+    assert_file "app/assets/javascripts/routers/router.js",
+                /index:\sfunction\(\)\s{/
+  end
+
+  test "should create show method" do
+    run_generator
+    assert_file "app/assets/javascripts/routers/router.js",
+                /show:\sfunction\(id\)\s{/
+  end
+
+  test "should create edit method" do
+    run_generator
+    assert_file "app/assets/javascripts/routers/router.js",
+                /edit:\sfunction\(id\)\s{/
+  end
+
+  test "should create new method" do
+    run_generator
+    assert_file "app/assets/javascripts/routers/router.js",
+                /new:\sfunction\(\)\s{/
   end
 end

@@ -15,8 +15,35 @@ module Slouch
       def create_crud_routes
         inject_into_file "app/assets/javascripts/routers/router.js",
                          :after => "routes:\s{\n" do
-          "      \"#{name.underscore.pluralize}\": \"#{name.pluralize}.index\""
+          <<-eos
+                "#{name.underscore.pluralize}":          "#{name.pluralize}.index",
+                "#{name.underscore.pluralize}/:id":      "#{name.pluralize}.show",
+                "#{name.underscore.pluralize}/:id/edit": "#{name.pluralize}.edit",
+                "#{name.underscore.pluralize}/new":      "#{name.pluralize}.new"
+          eos
         end
+      end
+
+      def create_crud_namespaced_methods
+        inject_into_file "app/assets/javascripts/routers/router.js",
+                         :before => "});" do
+          <<-eos
+            #{name.pluralize} = {
+              index: function() {
+              },
+
+              show: function(id) {
+              },
+
+              edit: function(id) {
+              },
+
+              new: function() {
+              }
+            }
+          eos
+        end
+
       end
 
       def create_backbone_namespace
