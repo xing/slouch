@@ -14,7 +14,7 @@
   <fieldset>
     <% attributes.each do |attribute| -%>
       <div>
-        <%%= f.label :<%= attribute.name %> %><br />
+        <%%= f.label :<%= attribute.name %> %>
         <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
       </div>
     <% end -%>
