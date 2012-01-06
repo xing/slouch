@@ -16,10 +16,10 @@ module Slouch
         inject_into_file "app/assets/javascripts/routers/router.js",
                          :after => "routes:\s{\n" do
           <<-eos
-                "#{name.underscore.pluralize}":          "#{name.pluralize}.index",
-                "#{name.underscore.pluralize}/:id":      "#{name.pluralize}.show",
-                "#{name.underscore.pluralize}/:id/edit": "#{name.pluralize}.edit",
-                "#{name.underscore.pluralize}/new":      "#{name.pluralize}.new"
+            "#{name.underscore.pluralize}":          "#{name.pluralize}.index",
+            "#{name.underscore.pluralize}/:id":      "#{name.pluralize}.show",
+            "#{name.underscore.pluralize}/:id/edit": "#{name.pluralize}.edit",
+            "#{name.underscore.pluralize}/new":      "#{name.pluralize}.new"
           eos
         end
       end
@@ -30,15 +30,23 @@ module Slouch
           <<-eos
             #{name.pluralize} = {
               index: function() {
+                var view = new #{application_name}.#{name.pluralize}.Index();
+                $("##{name.underscore.pluralize}").html(view.render().el);
               },
 
               show: function(id) {
+                var view = new #{application_name}.#{name.pluralize}.Show();
+                $("##{name.underscore.pluralize}").html(view.render().el);
               },
 
               edit: function(id) {
+                var view = new #{application_name}.#{name.pluralize}.Edit();
+                $("##{name.underscore.pluralize}").html(view.render().el);
               },
 
               new: function() {
+                var view = new #{application_name}.#{name.pluralize}.New();
+                $("##{name.underscore.pluralize}").html(view.render().el);
               }
             }
           eos
