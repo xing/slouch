@@ -29,7 +29,7 @@ module Slouch
       end
 
       def create_rails_model
-        invoke "#{generator_rails_options[:orm]}:model", [name] + attributes.map {|a| "#{a.name}:#{a.type}"}
+        invoke "#{generator_rails_options[:orm]}:model", name_and_attributes_array
       end
 
       def create_rails_model_test
@@ -49,7 +49,7 @@ module Slouch
       end
 
       def create_rails_views
-        invoke "slouch:templates", [name]
+        invoke "slouch:templates", name_and_attributes_array
       end
 
       def create_slouch_stylesheet
@@ -60,6 +60,11 @@ module Slouch
         invoke "scaffold_controller", [name], :template_engine => false
       end
 
+      private
+
+      def name_and_attributes_array
+        [name] + attributes.map {|a| "#{a.name}:#{a.type}"}
+      end
     end
   end
 end

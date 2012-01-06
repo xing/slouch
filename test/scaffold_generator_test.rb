@@ -5,6 +5,7 @@ class ScaffoldGeneratorTest < ::Rails::Generators::TestCase
   tests ::Slouch::Generators::ScaffoldGenerator
 
   MODEL_NAME = "ProductLine"
+  MODEL_PLURAL = MODEL_NAME.underscore.pluralize
   arguments [MODEL_NAME, "title:string", "product:belongs_to", "user:references", "--migration=true", "--skip-template_engine"]
   destination TMP_DIR
 
@@ -88,6 +89,18 @@ class ScaffoldGeneratorTest < ::Rails::Generators::TestCase
   test "should create the slouch stylesheets" do
     run_generator
     assert_file "app/assets/stylesheets/slouch.css.scss"
+  end
+
+  test "should create a rails _form view" do
+    run_generator
+    assert_file "app/views/#{MODEL_PLURAL}/_form.html.erb",
+                /f.label :title/
+    assert_file "app/views/#{MODEL_PLURAL}/_form.html.erb",
+                /f.text_field :title/
+    assert_file "app/views/#{MODEL_PLURAL}/_form.html.erb",
+                /f.label :user/
+    assert_file "app/views/#{MODEL_PLURAL}/_form.html.erb",
+                /f.text_field :user/
   end
 
   private
