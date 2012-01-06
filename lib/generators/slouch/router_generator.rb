@@ -68,7 +68,7 @@ module Slouch
       end
 
       def inject_dom_ready_into_application_js
-        inject_into_file "app/assets/javascripts/application.js", :after => "require_tree" do
+        inject_into_file "app/assets/javascripts/application.js", :after => "require_tree ." do
           "\n\n$(function() {\n\n});"
         end
       end
