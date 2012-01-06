@@ -25,6 +25,10 @@ module Slouch
       def create_new
         template "new.html.erb", "app/views/#{file_name.pluralize}/new.html.erb"
       end
+
+      def create_form
+        template "_form.html.erb", "app/views/#{file_name.pluralize}/_form.html.erb"
+      end
     end
   end
 end

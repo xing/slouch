@@ -33,4 +33,9 @@ class TemplatesGeneratorTest < ::Rails::Generators::TestCase
     assert_file "app/views/#{MODEL_PLURAL}/new.html.erb"
   end
 
+  test "should create a rails _form view" do
+    run_generator
+    assert_file "app/views/#{MODEL_PLURAL}/_form.html.erb"
+  end
+
 end

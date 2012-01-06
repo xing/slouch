@@ -12,16 +12,14 @@
   <%% end %>
 
   <fieldset>
-    <div>
-      <%%= f.label :name %>
-      <%%= f.text_field :name %>
-    </div>
-
-    <div>
-      <%%= f.label :description %>
-      <%%= f.text_area :description %>
-    </div>
+    <% attributes.each do |attribute| -%>
+      <div>
+        <%%= f.label :<%= attribute.name %> %><br />
+        <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
+      </div>
+    <% end -%>
   </fieldset>
 
   <%%= f.submit class: 'action submit' %>
 <%% end %>
+
