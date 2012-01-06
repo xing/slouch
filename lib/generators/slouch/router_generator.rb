@@ -59,8 +59,23 @@ module Slouch
       end
 
       def inject_router_initialization
-        inject_into_file "app/assets/javascripts/backbone_app.js", :after => "public_.Routers = {" do
-          "\n    window.App = new public_.Routers.Router();\n    Backbone.history.start({ pushState: true });"
+        inject_into_file "app/assets/javascripts/backbone_app.js", :before => "return public_" do
+          "\n    public_.initialize = function() {" +
+          "\n      window.App = new public_.Routers.Router();" +
+          "\n      Backbone.history.start({ pushState: true });" +
+          "\n    };\n    "
+        end
+      end
+
+      def inject_dom_ready_into_application_js
+        inject_into_file "app/assets/javascripts/application.js", :after => "require_tree" do
+          "\n\n$(function() {\n\n});"
+        end
+      end
+
+      def inject_router_instanitiating
+        inject_into_file "app/assets/javascripts/application.js", :after => "$(function() {\n" do
+          "  #{application_name}.initialize();"
         end
       end
     end

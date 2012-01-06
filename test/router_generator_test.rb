@@ -28,9 +28,17 @@ class RouterGeneratorTest < ::Rails::Generators::TestCase
   test "should add router instantiation in backbone-app.js" do
     run_generator
     assert_file "app/assets/javascripts/backbone_app.js",
-                /window\.App\s=\snew\spublic_\.Routers\.Router/
+                /public_.initialize\s=\sfunction\(\)\s{/
     assert_file "app/assets/javascripts/backbone_app.js",
                 /Backbone\.history\.start\({\spushState:\strue\s}\);/
+  end
+
+  test "should call the router init in application.js/dom ready" do
+    run_generator
+    assert_file "app/assets/javascripts/application.js",
+                /\$\(function\(\)\s*{/
+    assert_file "app/assets/javascripts/application.js",
+                /#{application_name}\.initialize\(\);/
   end
 
   test "should create a skeleton router with routes and initialize properties" do
