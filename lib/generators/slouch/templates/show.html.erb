@@ -1,7 +1,7 @@
 <p id="notice"><%%= notice %></p>
 
 <% attributes.each do |attribute| -%>
-  <%= attribute.name %>
+  <%= attribute.name.humanize %>
   <%%= @<%= rails_model_name %>.<%= attribute.name %> %>
 <% end -%>
 
