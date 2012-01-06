@@ -10,12 +10,12 @@
       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       <div class="actions">
-        <%%= link_to 'Show', <%= rails_model_name %>, class: 'action' %>
-        <%%= link_to 'Edit', edit_<%= rails_model_name %>_path(<%= rails_model_name %>), class: 'action' %>
-        <%%= link_to 'Destroy', <%= rails_model_name %>, class: 'action delete', confirm: 'Are you sure?', method: :delete %>
+        <%%= link_to "Show", <%= rails_model_name %>, class: "action" %>
+        <%%= link_to "Edit", edit_<%= rails_model_name %>_path(<%= rails_model_name %>), class: "action" %>
+        <%%= link_to "Destroy", <%= rails_model_name %>, class: "action delete", confirm: "Are you sure?", method: :delete %>
       </div>
     </li>
   <%% end %>
 </ul>
 
-<%%= link_to 'New <%= name.humanize %>', new_<%= rails_model_name %>_path, class: 'action' %>
+<%%= link_to "New <%= name.humanize %>", new_<%= rails_model_name %>_path, class: "action" %>

@@ -6,7 +6,7 @@ module Slouch
     class RouterGenerator < ::Rails::Generators::NamedBase
       include ::Slouch::Generators::Helper
 
-      source_root File.expand_path('../templates', __FILE__)
+      source_root File.expand_path("../templates", __FILE__)
 
       def create
         template "router.js", "app/assets/javascripts/routers/router.js"

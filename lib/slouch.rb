@@ -1,3 +1,3 @@
 module Slouch
-  require 'slouch/engine'
+  require "slouch/engine"
 end

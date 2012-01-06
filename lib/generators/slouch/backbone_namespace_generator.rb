@@ -6,7 +6,7 @@ module Slouch
     class BackboneNamespaceGenerator < ::Rails::Generators::Base
       include ::Slouch::Generators::Helper
 
-      source_root File.expand_path('../templates', __FILE__)
+      source_root File.expand_path("../templates", __FILE__)
 
       def create
         template "backbone_app.js", "app/assets/javascripts/backbone_app.js"

@@ -8,7 +8,7 @@ module Slouch
       include ::Slouch::Generators::Helper
 
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
-      source_root File.expand_path('../templates', __FILE__)
+      source_root File.expand_path("../templates", __FILE__)
 
       def create_index
         template "index.html.erb", "app/views/#{file_name.pluralize}/index.html.erb"
