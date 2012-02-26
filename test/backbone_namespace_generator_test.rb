@@ -10,7 +10,7 @@ class BackboneNamespaceGeneratorTest < ::Rails::Generators::TestCase
   setup    :create_application_js
   teardown :destroy_tmp_dir
 
-  test "should create a namespace for all backbone-related stuff" do
+  test "creates a namespace for all backbone-related stuff" do
     run_generator
     assert_file "app/assets/javascripts/backbone_app.js"
     assert_file "app/assets/javascripts/backbone_app.js",
@@ -25,7 +25,7 @@ class BackboneNamespaceGeneratorTest < ::Rails::Generators::TestCase
                 /public_\.Routers/
   end
 
-  test "should be required in the manifest before require_tree" do
+  test "is required in the manifest before require_tree" do
     run_generator
     assert_file APP_JS_REL_PATH, /\/\/= require\sbackbone_app\n\s*\/\/=\srequire_tree/
   end

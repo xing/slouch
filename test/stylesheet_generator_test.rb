@@ -11,7 +11,7 @@ class StylesheetGeneratorTest < ::Rails::Generators::TestCase
   setup    :prepare_destination
   teardown :destroy_tmp_dir
 
-  test "it should create the slouch master stylesheet" do
+  test "creates the slouch master stylesheet" do
     run_generator
     assert_file "app/assets/stylesheets/slouch.css.scss"
   end

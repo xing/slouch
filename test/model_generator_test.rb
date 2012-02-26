@@ -11,12 +11,12 @@ class ModelGeneratorTest < ::Rails::Generators::TestCase
   setup    :prepare_destination
   teardown :destroy_tmp_dir
 
-  test "should create a backbone model" do
+  test "creates a backbone model" do
     run_generator
     assert_file "app/assets/javascripts/models/#{MODEL_NAME.underscore}.js"
   end
 
-  test "should create a model with default attributes" do
+  test "creates a model with default attributes" do
     run_generator
     assert_file "app/assets/javascripts/models/#{MODEL_NAME.underscore}.js",
                 /defaults: /
@@ -28,7 +28,7 @@ class ModelGeneratorTest < ::Rails::Generators::TestCase
                 /product: null/
   end
 
-  test "should namespace the model in the application object" do
+  test "namespaces the model in the application object" do
     run_generator
     assert_file "app/assets/javascripts/models/#{MODEL_NAME.underscore}.js",
                 /#{application_name} = \(\s*function/
